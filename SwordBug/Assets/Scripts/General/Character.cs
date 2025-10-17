@@ -5,17 +5,30 @@ using UnityEngine.Events;
 
 public class Character : MonoBehaviour
 {
+    public PhysicsCheck pc;
     [Header("基本属性")]
-    [SerializeField] private int maxHealth=6;
-    [SerializeField] private int currentHealth;
+     public int maxHealth=6;
+     public int currentHealth;
 
     [Header("受伤无敌")]
     public float nohurtDuration;
     private float nohurtCounter;
     public bool nohurt;
 
+    [Header("恢复间隔")]
+    public float healDuration;
+    public float healCounter;
+    public bool isheal;
+
     public UnityEvent<Transform> OnTakeDamage;//事件
     public UnityEvent OnDead;
+
+    public UnityEvent<Character> OnHealthChange;
+
+    private void Awake()
+    {
+        pc = GetComponent<PhysicsCheck>();
+    }
     private void Start()
     {
         currentHealth = maxHealth;
@@ -30,6 +43,16 @@ public class Character : MonoBehaviour
                 nohurt = false;
             }
         }
+        HealBlood();
+        if (isheal)
+        {
+            healCounter-= Time.deltaTime;
+            if (healCounter <= 0)
+            {
+                isheal = false;
+            }
+        }
+     
     }
     public void TakeDamge(Attack attack)
     {
@@ -40,6 +63,7 @@ public class Character : MonoBehaviour
             TriggerNoHurt();//进行受伤重置
             //受伤体现,利用事件加入方法
             OnTakeDamage?.Invoke(attack.transform);
+          
         }
         else
         { 
@@ -47,6 +71,7 @@ public class Character : MonoBehaviour
             //dead
             OnDead?.Invoke();
         }
+        OnHealthChange?.Invoke(this);
     }
 
    private void TriggerNoHurt()
@@ -56,5 +81,26 @@ public class Character : MonoBehaviour
             nohurt = true;
             nohurtCounter = nohurtDuration;
         }
+    }
+    public void HealBlood()
+    {
+        if (isheal)
+        {
+            healCounter -= Time.deltaTime;
+            if (healCounter <= 0)
+            {
+                isheal = false;
+            }
+        }
+        if (!isheal&&pc.isCelling && currentHealth < maxHealth)
+        {
+            currentHealth++;
+            isheal = true;
+            healCounter = healDuration; // 重置冷却计时器
+            OnHealthChange?.Invoke(this);
+            //Debug.Log("恢复半格生命值，当前生命值: "+currentHealth);
+
+        }
+           
     }
 }

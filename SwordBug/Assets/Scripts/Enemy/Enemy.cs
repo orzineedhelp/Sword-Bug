@@ -32,7 +32,10 @@ public class Enemy : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Move();
+        if (!wait)
+        {
+            Move();
+        }
     }
     public virtual void Move()
     {
