@@ -1,0 +1,227 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1351481582130698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4489706664004014}
+  - component: {fileID: 114615895173425724}
+  - component: {fileID: 114712392823947924}
+  - component: {fileID: 114670435652434602}
+  - component: {fileID: 114942523284617676}
+  - component: {fileID: 114568590051409150}
+  - component: {fileID: 114862616252712192}
+  - component: {fileID: 114674210250262074}
+  - component: {fileID: 114181745552130090}
+  - component: {fileID: 114183578280801398}
+  m_Layer: 0
+  m_Name: TetrisLZ
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4489706664004014
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351481582130698}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.4647963, y: 0.28342772, z: -9.905395}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114615895173425724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351481582130698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaaddf4fe4d249a4589a338cda50b3d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TB:
+  - {fileID: 11400000, guid: f25e608677dd3ca46a3d214db7ca5a69, type: 2}
+  - {fileID: 11400000, guid: f25e608677dd3ca46a3d214db7ca5a69, type: 2}
+  - {fileID: 11400000, guid: f25e608677dd3ca46a3d214db7ca5a69, type: 2}
+  - {fileID: 11400000, guid: f25e608677dd3ca46a3d214db7ca5a69, type: 2}
+  TBClear:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  TileMapObject: {fileID: 0}
+  Positions:
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 2, z: 0}
+  - {x: 0, y: 3, z: 0}
+  - {x: 0, y: 4, z: 0}
+  TBLocked:
+  - {fileID: 11400000, guid: 4ebde29bce0fd004990e09bff818af61, type: 2}
+  - {fileID: 11400000, guid: 4ebde29bce0fd004990e09bff818af61, type: 2}
+  - {fileID: 11400000, guid: 4ebde29bce0fd004990e09bff818af61, type: 2}
+  - {fileID: 11400000, guid: 4ebde29bce0fd004990e09bff818af61, type: 2}
+--- !u!114 &114712392823947924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351481582130698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19d04b264b06b3b4da11282a3bfee929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: CurrentTetris
+  TransformPositions:
+  - {fileID: 114862616252712192}
+  - {fileID: 114674210250262074}
+  - {fileID: 114181745552130090}
+  - {fileID: 114183578280801398}
+  TilesManualObject: {fileID: 0}
+  CurrentTransformPos: 0
+  OriginPositionAtTileMap: {x: 0, y: 3, z: 0}
+  OffsetAtTileMap: {x: 0, y: 0, z: 0}
+  TransformedPositions: {fileID: 114942523284617676}
+  LastTransformedPositions: {fileID: 114670435652434602}
+  TempTransformedPositions: {fileID: 114568590051409150}
+  LockTile: {fileID: 11400000, guid: 4ebde29bce0fd004990e09bff818af61, type: 2}
+--- !u!114 &114670435652434602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351481582130698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 481b2a0ea1ccb7243993e2361d71dd71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LastTransformedPositions
+  Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+--- !u!114 &114942523284617676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351481582130698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 481b2a0ea1ccb7243993e2361d71dd71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Transformed Position
+  Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+--- !u!114 &114568590051409150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351481582130698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 481b2a0ea1ccb7243993e2361d71dd71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: TmpTransformedPosition
+  Positions:
+  - {x: -1, y: -3, z: 0}
+  - {x: -2, y: -3, z: 0}
+  - {x: -2, y: -3, z: 0}
+  - {x: -2, y: -3, z: 0}
+--- !u!114 &114862616252712192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351481582130698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 481b2a0ea1ccb7243993e2361d71dd71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 0
+  Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 1, y: 1, z: 0}
+  - {x: 0, y: -1, z: 0}
+--- !u!114 &114674210250262074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351481582130698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 481b2a0ea1ccb7243993e2361d71dd71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 1
+  Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: -1, y: 0, z: 0}
+  - {x: 1, y: -1, z: 0}
+  - {x: 1, y: 0, z: 0}
+--- !u!114 &114181745552130090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351481582130698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 481b2a0ea1ccb7243993e2361d71dd71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 2
+  Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: -1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: -1, y: -1, z: 0}
+--- !u!114 &114183578280801398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351481582130698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 481b2a0ea1ccb7243993e2361d71dd71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 3
+  Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 1, y: 0, z: 0}
+  - {x: -1, y: 1, z: 0}
+  - {x: -1, y: 0, z: 0}

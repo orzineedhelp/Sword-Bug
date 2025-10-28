@@ -7,19 +7,26 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rb;
     PhysicsCheck pc;
     SpriteRenderer sr;
+    private Animator ani;
+
     [Header ("基本参数")]
     [SerializeField] private float moveSpeed;
     public Vector3 faceDirec;
+    public Transform attacker;
     [Header("撞墙计时器")]
     public float waitTime;
     public float waitCounter;
     public bool wait;
+    [Header("受伤")]
+    public bool isHurt;
+    [SerializeField] private float hurtForce;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         pc = GetComponent<PhysicsCheck>();
         sr = GetComponent<SpriteRenderer>();
+        ani = GetComponent<Animator>();
     }
     private void Update()
     {
@@ -32,7 +39,7 @@ public class Enemy : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!wait)
+        if (!wait&&!isHurt)
         {
             Move();
         }
@@ -54,5 +61,12 @@ public class Enemy : MonoBehaviour
                 waitCounter = waitTime;
             }
         }
+    }
+
+    public void OnTakeDamage(Transform attack)
+    {
+        attacker = attack;
+        isHurt = true;
+        ani.SetTrigger("hurt");
     }
 }

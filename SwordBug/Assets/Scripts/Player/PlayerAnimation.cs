@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerAnimation : MonoBehaviour
 {
@@ -18,11 +20,7 @@ public class PlayerAnimation : MonoBehaviour
         playerControl=GetComponent<PlayerControl>();
         character=GetComponent<Character>();
     }
-    void Start()
-    {
-        
-    }
-
+  
     void Update()
     {
         SetAnimation();
@@ -37,6 +35,7 @@ public class PlayerAnimation : MonoBehaviour
         ani.SetBool("noHurt", character.nohurt);
         ani.SetBool("isAttack", playerControl.isAttack);
         ani.SetBool("isHold", playerControl.isHold);
+        ani.SetBool("isPick", playerControl.isPick);
     }
     public void PlayHurt()
     {
@@ -46,22 +45,27 @@ public class PlayerAnimation : MonoBehaviour
     public void PlayAttack()
     {
         ani.SetTrigger("attack");
+        playerControl.ActiveArea(true);
+    }
+    public void SetAttackUI()
+    {
+        ani.SetTrigger("UI");
+
+    }
+   
+    public void UseSword()
+    {
         
+        ani.SetTrigger("Sword");
+       
     }
-    public void Pick()
+    public void UseBrick()
     {
-        //玩家拾取物品
+
+        ani.SetTrigger("Brick");
+
     }
-    public void UseThing()
-    {
-        //使用剑进行撑杆跳，或摆放方块
-        //if (true)//剑
-        //{
-        //    ani.SetTrigger("Use");
-        //}
-        //else//方块
-        //{
-        //    ani.SetTrigger("Down");
-        //}
-    }
+    
+   
+
 }

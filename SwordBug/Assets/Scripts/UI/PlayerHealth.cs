@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public List<Image> hearts;
     private int[] isFull=new int[3];//1满0半-1空
+    private Animator  animator;
  
 
     private void Awake()
@@ -37,15 +38,21 @@ public class PlayerHealth : MonoBehaviour
             isFull[i] = 1;
         }
 
+        animator=GetComponent<Animator>();
 
     }
-    public void OnHealthChange(int num,bool isheal)
+    public void OnHealthChange(int num,bool isheal,bool isDead)
     {
+        if (isDead)
+        {
+            foreach (Image heart in hearts) heart.fillAmount = 0;
+            for (int i = 0; i < 3; i++) isFull[i] = -1;
+        }
         if (isheal)
         {
             Heal();
         }
-       else
+       else 
         {
             //共有6血，扣一则减半心，扣二则减全心
             switch (num)
@@ -54,16 +61,18 @@ public class PlayerHealth : MonoBehaviour
 
                     foreach (Image heart in hearts) heart.fillAmount = 1;
                     for (int i = 0; i < 3; i++) isFull[i] = 1;
+                    Debug.Log("恢复全血量");
                     break;
                 case 1://扣半滴
-                    hearts[0].fillAmount = 0.5f;
-                    isFull[0] = 0;
+                    hearts[2].fillAmount = 0.5f;
+                    isFull[2] = 0;
                     break;
                 case 2://扣一滴
-                    hearts[0].fillAmount = 0;
-                    isFull[0] = -1;
+                    hearts[2].fillAmount = 0;
+                    isFull[2] = -1;
                     break;
                 case 3:
+                    
                     hearts[1].fillAmount = 0.5f;
                     isFull[1] = 0;
                     break;
@@ -72,12 +81,12 @@ public class PlayerHealth : MonoBehaviour
                     isFull[1] = -1;
                     break;
                 case 5:
-                    hearts[2].fillAmount = 0.5f;
-                    isFull[2] = 0;
+                    hearts[0].fillAmount = 0.5f;
+                    isFull[0] = 0;
                     break;
                 case 6:
-                    hearts[2].fillAmount = 0;
-                    isFull[2] = -1;
+                    hearts[0].fillAmount = 0;
+                    isFull[0] = -1;
                     break;
                 default:
                     break;
@@ -88,9 +97,9 @@ public class PlayerHealth : MonoBehaviour
 
     public void Heal()
     {
-           
-        // 从右向左寻找需要恢复的心形
-        for (int i = 2; i >= 0; i--)
+        animator.SetTrigger("shake");
+        // 寻找需要恢复的心形
+        for (int i = 0; i < 3; i++)
         {
             if (isFull[i] < 1)
             {

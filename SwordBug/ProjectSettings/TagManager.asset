@@ -3,7 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bounds
+  - Sword
+  - Brick
+  - Spike
+  - Mushroom
+  - Spring
+  - Wood
+  - Tetromino
+  - Attack
+  - Gold
+  - Phone
+  - PointCheck
   layers:
   - Default
   - TransparentFX
@@ -16,7 +28,7 @@ TagManager:
   - Celling
   - Enemy
   - Background
-  - 
+  - Mushroom
   - 
   - 
   - 

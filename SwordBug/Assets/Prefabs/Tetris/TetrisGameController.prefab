@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1259237840311856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4894289799328144}
+  - component: {fileID: 114681573086775090}
+  - component: {fileID: 114683745853782946}
+  - component: {fileID: 114549551257095906}
+  m_Layer: 0
+  m_Name: TetrisGameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4894289799328144
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259237840311856}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.0080805, y: -0.010235459, z: -9.9154415}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114681573086775090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259237840311856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9274a105c3453547b63ead532c5c7ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentTetris: {fileID: 114444837369935882, guid: 6421edb70cb2f6045a6b2caf4a727b36, type: 3}
+  DownSpeed: 1
+  TCL: {fileID: 114683745853782946}
+  TGO: {fileID: 114549551257095906}
+  AllTetrisCanUse:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  horizontalMoveCooldown: 0.5
+  verticalMoveCooldown: 0.2
+  enableRandomRotation: 1
+  maxRandomRotations: 4
+  specialTetrisIndex: 2
+  requireNoRotation: 1
+--- !u!114 &114683745853782946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259237840311856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10d106c72ad96a64e9cf926443d3362c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: TetrisClear
+  TilesManualObject: {fileID: 0}
+  TBLockedBlock: {fileID: 11400000, guid: 4ebde29bce0fd004990e09bff818af61, type: 2}
+  LT: {x: -4, y: 3}
+  RD: {x: 4, y: -16}
+  TBClear: {fileID: 0}
+--- !u!114 &114549551257095906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259237840311856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c2103a1a39c1345ac1c85cbb53305e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: GameOverObj
+  TilesManualObject: {fileID: 0}
+  TBLockedBlock: {fileID: 11400000, guid: 4ebde29bce0fd004990e09bff818af61, type: 2}
+  LT: {x: -4, y: 3}
+  RD: {x: 4, y: -16}

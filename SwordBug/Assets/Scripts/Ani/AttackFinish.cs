@@ -20,6 +20,7 @@ public class AttackFinish : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.GetComponent<PlayerControl>().isAttack = false;
+        animator.GetComponent<PlayerControl>().ActiveArea(false);
 
     }
 
