@@ -66,6 +66,7 @@ public class PlayerControl : MonoBehaviour
     public bool isChangingSize = false; // 是否正在改变大小
     private bool isMovementReversed = false; // 移动方向是否反转
     public bool isTetromino=false;//是否在俄罗斯方块关卡
+    public bool isMushroom;//是否进入第二关
 
 
 
@@ -302,7 +303,7 @@ public class PlayerControl : MonoBehaviour
         CheckState();
         if (character.isRestart)
         {
-            if (!isMovementReversed&&!isTetromino)
+            if (!isMovementReversed&&!isTetromino&&isMushroom)
             {
                 ToggleInputSystem();//设置为刚吃下第一个蘑菇的状态
                 character.isRestart = false;

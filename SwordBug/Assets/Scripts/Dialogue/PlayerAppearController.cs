@@ -51,7 +51,7 @@ public class PlayerAppearController : MonoBehaviour
     private PlayerControl playerControl;       // 玩家控制脚本组件
 
     public GoldDialogueTrigger dialogueTrigger;
-    public GameObject light;
+    public GameObject lightFlash;
     // ========== 状态变量 ==========
     private bool isMoving = false;             // 是否正在移动中
     private bool hasArrived = false;           // 是否已到达目标位置
@@ -170,7 +170,7 @@ public class PlayerAppearController : MonoBehaviour
         // 激活玩家精灵渲染器，使玩家可见
         if (playerSpriteRenderer != null)
         {
-            light.SetActive(true);
+            lightFlash.SetActive(true);
             playerSpriteRenderer.enabled = true;
             Debug.Log($"玩家Sprite Renderer已启用: {playerSpriteRenderer.enabled}");
         }

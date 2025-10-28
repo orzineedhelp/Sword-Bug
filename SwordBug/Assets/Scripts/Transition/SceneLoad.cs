@@ -16,22 +16,24 @@ public class SceneLoad : MonoBehaviour,ISaveable
     public GameObject player;
    
     [Header("事件监听")]
-    public SceneLoadEventSO loadEventSO;
-    public VoidEventSO newGameEvent;
-    private GameSceneSO nextScene;
-    private Vector3 positionNext;
+    public SceneLoadEventSO loadEventSO;//装载要加载的场景、玩家位置、是否需要转场动画、是否需要改变玩家位置
+    public VoidEventSO newGameEvent;//用于直接加载第一场景
+    public VoidEventSO backToMenuEvent;
+
+
+    private GameSceneSO nextScene;//记录之后要加载的场景
+    private Vector3 positionNext;//之后玩家的位置
     private bool needAni;
-    [Header("场景")]
+    [Header("记录场景")]
     public GameSceneSO menuLoadScene;
     public GameSceneSO firstLoadScene;
     public GameSceneSO currentScene;
     public VoidEventSO onMap0Loaded; // 进入map0时触发的事件
 
     [Header("广播")]
-    public VoidEventSO afterSceneLoadedEvent;
+    public VoidEventSO afterSceneLoadedEvent;//加载完场景后通知
     public FadeEventSO fadeEvent;
     public SceneLoadEventSO unLoadedSceneEvent;
-    public VoidEventSO backToMenuEvent;
     public float fadeDuration;
 
    
@@ -104,7 +106,7 @@ public class SceneLoad : MonoBehaviour,ISaveable
         }
         yield return new WaitForSeconds(fadeDuration);
         //广播事件调整血量
-        unLoadedSceneEvent.RaisedLoadRequestEvent(nextScene,positionNext,true,true);
+        unLoadedSceneEvent.RaisedLoadRequestEvent(nextScene,positionNext,true,true);//卸载场景去下一个场景
         yield return currentScene.sceneReference.UnLoadScene();//等待操作完成后
 
         playerPosition.gameObject.SetActive(false);
@@ -135,7 +137,7 @@ public class SceneLoad : MonoBehaviour,ISaveable
             fadeEvent.FadeOut(fadeDuration);
         }
         if(currentScene.sceneType!=SceneType.Menu) 
-        afterSceneLoadedEvent?.RaiseEvent();
+        afterSceneLoadedEvent?.RaiseEvent();//广播告诉大家场景加载完了
     }
 
     DataDefinition ISaveable.GetDataID()

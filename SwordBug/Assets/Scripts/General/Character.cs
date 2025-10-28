@@ -97,7 +97,7 @@ public class Character : MonoBehaviour,ISaveable
             pcControl.ToggleInputSystem();
             Destroy(collision.gameObject);
             dialogue.ChangeisDialogue();
-
+            pcControl.isMushroom = true;
 
         }
         if(collision.tag == "Spring")
@@ -226,7 +226,7 @@ public class Character : MonoBehaviour,ISaveable
             isRestart = data.boolSaveData[GetDataID().ID];
             isDead = false;
             //通知血量
-         //   Debug.Log("恢复血量" + (int)data.floatSavedData[GetDataID().ID + "health"]);
+            Debug.Log("恢复血量" + (int)data.floatSavedData[GetDataID().ID + "health"]);
             OnHealthChange?.Invoke(this);
         }
 

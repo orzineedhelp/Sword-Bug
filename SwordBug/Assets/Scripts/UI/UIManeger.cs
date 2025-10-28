@@ -15,7 +15,7 @@ public class UIManeger : MonoBehaviour
     [Header("事件监听")]
     public CharacterEventSO HealthEvent;//由character利用事件传递信息，之后UIManeger接受并统一处理UI
     public SceneLoadEventSO unloadedSceneEvent;
-    public VoidEventSO loadDataEvent;
+    public VoidEventSO loadDataEvent;//加载保存数据
     public VoidEventSO gameOverEvent;
     public VoidEventSO backToMenuEvent;
 
@@ -65,7 +65,7 @@ public class UIManeger : MonoBehaviour
     {
         //具体扣血UI显示逻辑执行
         int num = character.maxHealth- character.currentHealth;
-        Debug.Log("扣除血量为" + num+"isheal"+ character.isheal+"isdead"+ character.isDead);
+    //    Debug.Log("扣除血量为" + num+"isheal"+ character.isheal+"isdead"+ character.isDead);
         playerHealth.OnHealthChange(num,character.isheal,character.isDead);
 
     }

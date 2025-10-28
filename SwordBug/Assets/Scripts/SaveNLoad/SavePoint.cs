@@ -12,8 +12,9 @@ public class SavePoint : MonoBehaviour
     {
         if (!isSaved)
         {
-            if(collision.tag=="Player")
-            //保存数据
+            if (collision.tag == "Player")
+                //保存数据
+                Debug.Log(saveGameEvent.name);
             saveGameEvent.RaiseEvent();
             isSaved = true;
         }   
