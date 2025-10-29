@@ -685,8 +685,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 45.401356, y: -2.2629871}
-      - {x: -23.48049, y: -2.5823984}
+    - - {x: 46.455067, y: 2.7635078}
+      - {x: -23.793589, y: 2.5437098}
       - {x: -23.565252, y: -31.20878}
       - {x: 45.538746, y: -30.924955}
   m_UseDelaunayMesh: 0
@@ -2299,7 +2299,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 694645025
   m_SortingLayer: 2
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 02b865b111e30d245b6dbb0e67ed2467, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3041,53 +3041,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 109ebf5ad51cc1e4e8eaf340504c1d30, type: 3}
---- !u!1 &1893596366
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1893596368}
-  - component: {fileID: 1893596367}
-  m_Layer: 0
-  m_Name: Teleport
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1893596367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1893596366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab31f05022aa6d9408b30f6b8a9e6ba5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TeleportPosition: {x: 0, y: 0, z: 0}
-  nextScene: {fileID: 0}
-  loadEventSO: {fileID: 11400000, guid: efc14a9b2d37d2944830502a9c28fc52, type: 2}
---- !u!4 &1893596368
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1893596366}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -42.4, y: -15.8, z: -0.10081369}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2000741659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21475,7 +21428,6 @@ SceneRoots:
   - {fileID: 1558791278}
   - {fileID: 1570583110}
   - {fileID: 558062698}
-  - {fileID: 1893596368}
   - {fileID: 664319419}
   - {fileID: 939653499}
   - {fileID: 1223839851}

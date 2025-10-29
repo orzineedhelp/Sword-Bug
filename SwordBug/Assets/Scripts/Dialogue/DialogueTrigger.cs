@@ -25,6 +25,7 @@ public class DialogueTrigger : MonoBehaviour
     public bool isDialogue;
     public GameObject player;
     public bool isEnd=false;//检查是否结束对话
+    public bool needPause;
 
     [Header("打字机效果设置")]
     public float typingSpeed = 0.05f;
@@ -130,7 +131,7 @@ public class DialogueTrigger : MonoBehaviour
         dialogueActive = true;
         currentDialogueIndex = 0;
         // 暂停游戏
-        PauseGame(true);
+       if(needPause) PauseGame(true);
         // 显示对话框
         if (dialogueBox != null)
         {
@@ -145,19 +146,19 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (isStop)
         {
-            //player.GetComponent<PlayerControl>().enabled = false;
-            //player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            player.GetComponent<PlayerControl>().enabled = false;
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
-            //player.GetComponent<Rigidbody2D>().simulated=false;
-            //player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            player.GetComponent<Rigidbody2D>().simulated = false;
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
             //暂停输入
 
         }
-        else
+        else if (!isStop ) 
         {
-            //player.GetComponent<PlayerControl>().enabled = true;
-            //player.GetComponent<Rigidbody2D>().simulated = true;
+            player.GetComponent<PlayerControl>().enabled = true;
+            player.GetComponent<Rigidbody2D>().simulated = true;
 
 
         }
@@ -390,7 +391,7 @@ public class DialogueTrigger : MonoBehaviour
         Debug.Log("对话结束");
         isDialogue=false;
         isEnd = true;
-        PauseGame(false);
+       if(needPause) PauseGame(false);
         // 恢复所有游戏操作
 
     }

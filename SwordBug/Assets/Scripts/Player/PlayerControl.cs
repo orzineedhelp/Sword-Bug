@@ -139,7 +139,7 @@ public class PlayerControl : MonoBehaviour
     {
         // 切换移动方向反转状态
         isMovementReversed = !isMovementReversed;
-        Debug.LogWarning("切换方向");
+      //  Debug.LogWarning("切换方向");
 
         // 切换大小改变模式
         isInSizeChangeMode = !isInSizeChangeMode;
@@ -250,7 +250,6 @@ public class PlayerControl : MonoBehaviour
             transform.localScale = newShrinkScale;
             // 添加详细的调试信息
             Debug.Log($"缩放更新: {transform.localScale}, isScaleKeyPressed: {isScaleKeyPressed}, isInSizeChangeMode: {isInSizeChangeMode}");
-            transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
             // 如果达到最小尺寸且不是死亡状态，造成伤害
             if (newScale.x <= minScale && !isDead)
             {
@@ -323,6 +322,7 @@ public class PlayerControl : MonoBehaviour
         {
             if (!isMovementReversed&&!isTetromino&&isMushroom)
             {
+                Debug.LogWarning("切换！");
                 ToggleInputSystem();//设置为刚吃下第一个蘑菇的状态
                 character.isRestart = false;
             }
@@ -677,4 +677,6 @@ public class PlayerControl : MonoBehaviour
 
         }
     }
+
+
 }

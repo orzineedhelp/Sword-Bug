@@ -1970,6 +1970,7 @@ MonoBehaviour:
   isDialogue: 0
   player: {fileID: 1548527345854354030}
   isEnd: 0
+  needPause: 0
   typingSpeed: 0.05
   startDelay: 0.2
   emotionIconScaleDuration: 0.8
@@ -2403,6 +2404,7 @@ MonoBehaviour:
   isDialogue: 0
   player: {fileID: 1548527345854354030}
   isEnd: 0
+  needPause: 0
   typingSpeed: 0.1
   startDelay: 0.2
   emotionIconScaleDuration: 0.8
@@ -4678,6 +4680,7 @@ GameObject:
   m_Component:
   - component: {fileID: 937695208}
   - component: {fileID: 937695207}
+  - component: {fileID: 937695209}
   m_Layer: 0
   m_Name: EndManager
   m_TagString: Untagged
@@ -4700,6 +4703,32 @@ MonoBehaviour:
   endDialogue: {fileID: 450984021}
   player: {fileID: 1548527345854354030}
   pa: {fileID: 7077104735516189874}
+  teleport: {fileID: 937695209}
+  mainUI: {fileID: 1257981871}
+  moveCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &937695208
 Transform:
   m_ObjectHideFlags: 0
@@ -4715,6 +4744,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &937695209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937695206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab31f05022aa6d9408b30f6b8a9e6ba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TeleportPosition: {x: 0, y: 0, z: 0}
+  nextScene: {fileID: 11400000, guid: 777418893facce247b9b4d7a7dd3e64f, type: 2}
+  loadEventSO: {fileID: 11400000, guid: efc14a9b2d37d2944830502a9c28fc52, type: 2}
 --- !u!1 &938251032
 GameObject:
   m_ObjectHideFlags: 0
@@ -5727,6 +5771,7 @@ MonoBehaviour:
   isDialogue: 0
   player: {fileID: 1548527345854354030}
   isEnd: 0
+  needPause: 1
   typingSpeed: 0.05
   startDelay: 0.2
   emotionIconScaleDuration: 0.8
@@ -6219,7 +6264,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1257981872
 Transform:
   m_ObjectHideFlags: 0
@@ -8991,6 +9036,7 @@ MonoBehaviour:
   isDialogue: 0
   player: {fileID: 1548527345854354030}
   isEnd: 0
+  needPause: 1
   typingSpeed: 0.05
   startDelay: 0.2
   emotionIconScaleDuration: 0.8
@@ -9101,7 +9147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1893596367
 MonoBehaviour:
   m_ObjectHideFlags: 0

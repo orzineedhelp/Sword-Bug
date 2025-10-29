@@ -8,6 +8,7 @@ public class Menu : MonoBehaviour
     public GameObject newGameButton;
     private void OnEnable()
     {
+        if(newGameButton != null)
         EventSystem.current.SetSelectedGameObject(newGameButton);
     }
 
