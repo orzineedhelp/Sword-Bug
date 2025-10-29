@@ -151,10 +151,9 @@ public class GoldDialogue : MonoBehaviour
         {
             goldAnimator.SetBool("IsDisappear", true);
         }
-
-        yield return new WaitForSeconds(1f);
-        //TODO×ª³¡
         Addressables.LoadSceneAsync("Persistent");
+
+        yield return null;
     }
 
     public void StartDialogue()

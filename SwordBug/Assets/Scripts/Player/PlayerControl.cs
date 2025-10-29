@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
-using static UnityEditor.Progress;
 
 
 public class PlayerControl : MonoBehaviour

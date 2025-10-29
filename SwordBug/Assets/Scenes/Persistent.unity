@@ -797,6 +797,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 208211457}
+        m_TargetAssemblyTypeName: UIManeger, Assembly-CSharp
+        m_MethodName: TogglePausePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 11400000, guid: 9f76d06d3fad1b548ab4306997799ad1, type: 2}
         m_TargetAssemblyTypeName: VoidEventSO, Assembly-CSharp
         m_MethodName: RaiseEvent
@@ -2386,7 +2398,7 @@ MonoBehaviour:
   - text: "\xB7\xB7\xB7\u4EC0\xB7\xB7\xB7\u4EC0\u4E48\xB7\xB7\xB7\xB7\xB7\xB7\uFF01"
     isGoldSpeaking: 1
     emotionIcon: {fileID: 197682993}
-  - text: "\u563F\u563F\u4F60\u8BF4\u7684\u5BF9\u563F\u563F"
+  - text: "\u563F\u563F\u4F60\u8BF4\u7684\u5BF9\u563F\u563F\u563F\u563F"
     isGoldSpeaking: 1
     emotionIcon: {fileID: 383355152}
   - text: "\xB7\xB7\xB7\xB7\xB7\xB7\uFF08\u50BB\u4EBA\u6709\u50BB\u798F\uFF09"
@@ -2398,7 +2410,7 @@ MonoBehaviour:
   - text: "\u597D\u561E\u563F\u563F\u8C22\u8C22\u4F60\uFF01\u6B22\u8FCE\u4F60\u518D\u6765\u73A9~"
     isGoldSpeaking: 1
     emotionIcon: {fileID: 383355152}
-  - text: "\u5343\u4E07\u522B\uFF01\uFF01"
+  - text: "\u5343\u4E07\u522B\u2014\u2014\uFF01\uFF01\uFF01\uFF01\uFF01\uFF01\uFF01\uFF01\uFF01"
     isGoldSpeaking: 0
     emotionIcon: {fileID: 0}
   isDialogue: 0
@@ -4390,10 +4402,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 815588648}
-  - {fileID: 1046484012}
-  - {fileID: 1015100524}
   - {fileID: 998413506}
+  - {fileID: 1015100524}
   - {fileID: 1902584443}
+  - {fileID: 1046484012}
   - {fileID: 548992597}
   m_Father: {fileID: 1257981872}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5377,8 +5389,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchoredPosition: {x: 5.25, y: 0.00001955}
+  m_SizeDelta: {x: 1909.5, y: 1012.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1046484013
 MonoBehaviour:
@@ -10048,6 +10060,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2039969227}
         m_TargetAssemblyTypeName: AudioDefination, Assembly-CSharp
         m_MethodName: PlayAudioClip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 208211457}
+        m_TargetAssemblyTypeName: UIManeger, Assembly-CSharp
+        m_MethodName: TogglePausePanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
