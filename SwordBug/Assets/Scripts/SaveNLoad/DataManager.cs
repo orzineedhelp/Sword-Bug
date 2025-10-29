@@ -55,16 +55,17 @@ public class DataManager : MonoBehaviour
         {
             saveable.GetSaveData(saveData);
         }
-        //foreach (var item in saveData.characterPosDict)
-        //{
-        //    Debug.Log(item.Key+"      "+item.Value);
-        //}
+        foreach (var item in saveData.characterPosDict)
+        {
+            Debug.Log(item.Key + "      " + item.Value);
+        }
     }
     public void Load()
     {
         foreach (var saveable in saveableList)
         {
             saveable.LoadData(saveData);
+            Debug.LogWarning("开始加载存储点");
         }
     }
 }

@@ -88,7 +88,7 @@ public class PlayerControl : MonoBehaviour
     [Header("大小改变")]
     [SerializeField] private float shrinkSpeed = 0.5f;
     public Vector3 originalScale;
-    [SerializeField] private float minScale = 0.5f;
+    [SerializeField] private float minScale = 0.2f;
     // 用于跟踪按键状态
     private bool isScaleKeyPressed = false;
     private Coroutine sizeChangeCoroutine;
@@ -194,15 +194,26 @@ public class PlayerControl : MonoBehaviour
     /// </summary>
     private void StartGradualShrink()
     {
-        if (!isInSizeChangeMode || isChangingSize) return;
+        Debug.Log($"开始渐进缩小 - 模式: {isInSizeChangeMode}, 正在改变: {isChangingSize}");
+        if (!isInSizeChangeMode || isChangingSize)
+        {
+            Debug.LogWarning($"无法开始缩小: 模式={isInSizeChangeMode}, 正在改变={isChangingSize}");
+            return;
+        }
+
 
         isScaleKeyPressed = true;
         isChangingSize = true;
 
         if (sizeChangeCoroutine != null)
+        {
+            Debug.Log("停止之前的协程");
             StopCoroutine(sizeChangeCoroutine);
+        }
+           
 
         sizeChangeCoroutine = StartCoroutine(GradualShrinkProcess());
+        Debug.Log("启动渐进缩小协程");
     }
 
     /// <summary>
@@ -229,15 +240,17 @@ public class PlayerControl : MonoBehaviour
         {
             // 计算新的缩放值
             Vector3 newScale = transform.localScale - Vector3.one * shrinkSpeed * Time.deltaTime;
-
+            Vector3 newShrinkScale = newScale;
             // 限制缩放不能小于最小尺寸
-            newScale.x = Mathf.Max(newScale.x, minScale);
-            newScale.y = Mathf.Max(newScale.y, minScale);
-            newScale.z = Mathf.Max(newScale.z, minScale);
-
+            newShrinkScale.x = Mathf.Max(newScale.x, minScale);
+            newShrinkScale.y = Mathf.Max(newScale.y, minScale);
+            newShrinkScale.z = Mathf.Max(newScale.z, minScale);
             // 应用新的缩放
-            transform.localScale = newScale;
 
+            transform.localScale = newShrinkScale;
+            // 添加详细的调试信息
+            Debug.Log($"缩放更新: {transform.localScale}, isScaleKeyPressed: {isScaleKeyPressed}, isInSizeChangeMode: {isInSizeChangeMode}");
+            transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
             // 如果达到最小尺寸且不是死亡状态，造成伤害
             if (newScale.x <= minScale && !isDead)
             {
@@ -248,7 +261,9 @@ public class PlayerControl : MonoBehaviour
 
             yield return null;
         }
-
+        Debug.Log("退出渐进缩小协程，原因: " +
+               (!isScaleKeyPressed ? "按键已释放" : "退出大小改变模式") +
+               ", isInSizeChangeMode: " + isInSizeChangeMode);
         isChangingSize = false;
         sizeChangeCoroutine = null;
     }
@@ -296,7 +311,10 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
-        
+        if (isChangingSize && sizeChangeCoroutine == null)
+        {
+            Debug.LogWarning("异常：isChangingSize为true但协程为null");
+        }
 
         if (!isAttack) ReadMovement();
         UpdateDoubleJumpStatus();
@@ -309,6 +327,7 @@ public class PlayerControl : MonoBehaviour
                 character.isRestart = false;
             }
             Item sword = transform.GetComponentInChildren<Item>();
+            if (sword == null) character.isRestart = false;
             if (sword.tag == "Sword")
             {
                 Destroy(sword.gameObject);

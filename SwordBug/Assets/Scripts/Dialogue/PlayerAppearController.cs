@@ -7,8 +7,10 @@ using System.Collections;
 /// </summary>
 public class PlayerAppearController : MonoBehaviour
 {
-    // ========== 移动设置 ==========
-    [Header("移动设置")]
+    [Header("音效")]
+    public AudioDefination appear;
+   // ========== 移动设置 ==========
+   [Header("移动设置")]
     [Tooltip("目标物体，玩家将移动到这个 GameObject 的位置")]
     public GameObject targetObject;
 
@@ -84,7 +86,7 @@ public class PlayerAppearController : MonoBehaviour
     /// </summary>
     void Start()
     {
-        Debug.Log($"PlayerAppearController.Start() 被调用 - 激活状态: {isActivated}");
+       // Debug.Log($"PlayerAppearController.Start() 被调用 - 激活状态: {isActivated}");
         if (isActivated) return; // 防止重复初始化
         // 保存初始位置和旋转，用于后续重置
       //  initialPosition = transform.position;
@@ -160,11 +162,11 @@ public class PlayerAppearController : MonoBehaviour
     IEnumerator DelayedActivation()
     {
 
-        Debug.Log("等待2秒延迟时间...");
+       // Debug.Log("等待2秒延迟时间...");
         // 等待指定的延迟时间
         yield return new WaitForSeconds(delayTime);
 
-        Debug.Log("2秒延迟时间结束，开始激活玩家");
+      //  Debug.Log("2秒延迟时间结束，开始激活玩家");
         
 
         // 激活玩家精灵渲染器，使玩家可见
@@ -172,15 +174,16 @@ public class PlayerAppearController : MonoBehaviour
         {
             lightFlash.SetActive(true);
             playerSpriteRenderer.enabled = true;
-            Debug.Log($"玩家Sprite Renderer已启用: {playerSpriteRenderer.enabled}");
+         //   Debug.Log($"玩家Sprite Renderer已启用: {playerSpriteRenderer.enabled}");
         }
 
 
         // 设置激活状态和移动状态
         isActivated = true;
         isMoving = true;
+        appear.PlayAudioClip();
 
-        Debug.Log("开始移动到目标位置，Animator保持禁用");
+       // Debug.Log("开始移动到目标位置，Animator保持禁用");
         
         // 如果启用旋转效果，开始旋转协程
         if (enableSpinEffect)
@@ -217,7 +220,7 @@ public class PlayerAppearController : MonoBehaviour
 
         // 定期显示移动信息（每30帧一次）
         if (showDebugInfo && Time.frameCount % 30 == 0)
-            Debug.Log($"当前距离: {distance}, 移动速度: {moveSpeed}, 当前位置: {currentPos}");
+      //      Debug.Log($"当前距离: {distance}, 移动速度: {moveSpeed}, 当前位置: {currentPos}");
 
         // 如果距离大于停止距离，继续移动
         if (distance > stoppingDistance)
@@ -304,26 +307,26 @@ public class PlayerAppearController : MonoBehaviour
         if (playerAnimator != null)
         {
             playerAnimator.enabled = true;
-            Debug.Log("Animator组件已启用，开始播放Idle动画");
+          //  Debug.Log("Animator组件已启用，开始播放Idle动画");
         }
 
         // 启用物理模拟
         if (playerRigidbody != null)
         {
             playerRigidbody.simulated = true;
-            Debug.Log("Rigidbody2D物理模拟已启用");
+           // Debug.Log("Rigidbody2D物理模拟已启用");
         }
 
         // 启用玩家控制脚本
         if (playerControl != null)
         {
             playerControl.enabled = true;
-            Debug.Log("PlayerControl脚本已启用");
+            //Debug.Log("PlayerControl脚本已启用");
         }
 
         // 重置旋转到初始状态
         transform.rotation = initialRotation;
-        Debug.Log("旋转已重置到初始状态");
+       // Debug.Log("旋转已重置到初始状态");
 
         // 开始位置监控协程，确保位置稳定
         StartCoroutine(MonitorPosition());
@@ -384,7 +387,7 @@ public class PlayerAppearController : MonoBehaviour
         if (hasArrived && targetObject != null && transform.position != targetObject.transform.position)
         {
             //transform.position = targetObject.transform.position;
-            Debug.LogWarning("LateUpdate: 检测到位置不正确，已强制设置到目标位置");
+          //  Debug.LogWarning("LateUpdate: 检测到位置不正确，已强制设置到目标位置");
         }
     }
 

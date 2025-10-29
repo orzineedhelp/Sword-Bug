@@ -24,6 +24,7 @@ public class DialogueTrigger : MonoBehaviour
     [Header("触发对话相关")]
     public bool isDialogue;
     public GameObject player;
+    public bool isEnd=false;//检查是否结束对话
 
     [Header("打字机效果设置")]
     public float typingSpeed = 0.05f;
@@ -144,14 +145,20 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (isStop)
         {
-        //   player.GetComponent<PlayerControl>().enabled = false;
+            //player.GetComponent<PlayerControl>().enabled = false;
+            //player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+            //player.GetComponent<Rigidbody2D>().simulated=false;
+            //player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
             //暂停输入
-            
+
         }
         else
         {
-          //  player.GetComponent<PlayerControl>().enabled = true;
-           
+            //player.GetComponent<PlayerControl>().enabled = true;
+            //player.GetComponent<Rigidbody2D>().simulated = true;
+
 
         }
     }
@@ -295,7 +302,7 @@ public class DialogueTrigger : MonoBehaviour
             currentEmotionIcon.transform.DOScale(originalScale, emotionIconScaleDuration)
                 .SetEase(Ease.OutBack);
 
-            Debug.Log($"显示情绪图标: {currentEmotionIcon.name}");
+            //Debug.Log($"显示情绪图标: {currentEmotionIcon.name}");
         }
     }
 
@@ -382,6 +389,7 @@ public class DialogueTrigger : MonoBehaviour
 
         Debug.Log("对话结束");
         isDialogue=false;
+        isEnd = true;
         PauseGame(false);
         // 恢复所有游戏操作
 

@@ -36,14 +36,14 @@ public class GoldDialogueTrigger : MonoBehaviour
 
     // 私有变量
     private bool dialogueActive = false; // 对话是否正在进行中
-    private bool dialogueCompleted = false; // 对话是否已完成
+    public bool dialogueCompleted = false; // 对话是否已完成
     private int currentDialogueIndex = 0; // 当前对话条目的索引
     private Tween typewriterTween; // 存储打字机效果的Tween对象
     private bool canProceedToNext = false; // 是否可以进入下一句对话
     private GameObject currentEmotionIcon; // 当前显示的情绪图标对象
     private PlayerInputControl inputActions; // 输入控制系统
     private bool waitingForAnimation = true; // 是否在等待动画完成
-
+    public GameObject player;
     // 触发模式枚举定义
     public enum TriggerMode
     {
@@ -102,7 +102,7 @@ public class GoldDialogueTrigger : MonoBehaviour
         {
             case TriggerMode.AutoAfterAnimation:
                 waitingForAnimation = true; // 等待动画完成标志
-                Debug.Log("等待动画完成后自动开始对话");
+              //  Debug.Log("等待动画完成后自动开始对话");
                 break;
             case TriggerMode.Manual:
                 waitingForAnimation = false; // 不需要等待动画
@@ -110,6 +110,24 @@ public class GoldDialogueTrigger : MonoBehaviour
                 break;
         }
     }
+    private void PauseGame(bool isStop)
+    {
+        if (isStop)
+        {
+            player.GetComponent<PlayerControl>().enabled = false;
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+            //暂停输入
+
+        }
+        else
+        {
+            player.GetComponent<PlayerControl>().enabled = true;
+
+
+        }
+    }
+
 
     // 确保所有对话条目中的情绪图标在场景启动时都是隐藏状态
     void EnsureEmotionIconsAreHidden()
@@ -143,6 +161,7 @@ public class GoldDialogueTrigger : MonoBehaviour
             Debug.Log("动画完成，准备开始对话");
             waitingForAnimation = false; // 标记动画已完成
             StartCoroutine(StartDialogueAfterDelay()); // 延迟后开始对话
+           
         }
     }
 
@@ -150,6 +169,8 @@ public class GoldDialogueTrigger : MonoBehaviour
     IEnumerator StartDialogueAfterDelay()
     {
         yield return new WaitForSeconds(autoStartDelay); // 等待指定延迟时间
+        PauseGame(true);
+
         StartDialogue(); // 开始对话
     }
 
@@ -286,7 +307,7 @@ public class GoldDialogueTrigger : MonoBehaviour
             currentEmotionIcon.transform.DOScale(originalScale, emotionIconScaleDuration)
                 .SetEase(Ease.OutBack); // 使用回弹效果
 
-            Debug.Log($"显示情绪图标: {currentEmotionIcon.name}");
+           // Debug.Log($"显示情绪图标: {currentEmotionIcon.name}");
         }
     }
 
@@ -366,6 +387,7 @@ public class GoldDialogueTrigger : MonoBehaviour
         }
 
         Debug.Log("对话结束");
+        PauseGame(false);
     }
 
     // 公共方法：手动触发对话（供外部调用）

@@ -10,9 +10,9 @@ public class SavePoint : MonoBehaviour
     public bool isSaved;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isSaved)
+        if (!isSaved&& collision.tag == "Player")
         {
-            if (collision.tag == "Player")
+          
                 //±£´æÊý¾Ý
                 Debug.Log(saveGameEvent.name);
             saveGameEvent.RaiseEvent();

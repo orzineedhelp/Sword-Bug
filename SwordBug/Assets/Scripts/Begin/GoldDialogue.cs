@@ -129,8 +129,7 @@ public class GoldDialogue : MonoBehaviour
         {
             // 玩家已到达且停止移动，触发消失动画
             StartCoroutine(TriggerDisappearAnimation());
-            //TODO转场
-            Addressables.LoadSceneAsync("Persistent");
+          
         }
     }
 
@@ -139,8 +138,7 @@ public class GoldDialogue : MonoBehaviour
     {
         hasDisappeared = true;
 
-        // 等待指定的延迟时间
-        yield return new WaitForSeconds(disappearDelay);
+    
 
         // 播放玩家消失动画
         if (playerAnimator != null)
@@ -153,6 +151,10 @@ public class GoldDialogue : MonoBehaviour
         {
             goldAnimator.SetBool("IsDisappear", true);
         }
+
+        yield return new WaitForSeconds(1f);
+        //TODO转场
+        Addressables.LoadSceneAsync("Persistent");
     }
 
     public void StartDialogue()
@@ -330,14 +332,14 @@ public class GoldDialogue : MonoBehaviour
         // 计算移动时间
         float moveDuration = distance / moveSpeed;
 
-        // 设置玩家朝向Gold
-        Vector3 direction = (targetPosition - player.transform.position).normalized;
-        if (direction.x != 0)
-        {
-            Vector3 scale = player.transform.localScale;
-            scale.x = Mathf.Abs(scale.x) * (direction.x > 0 ? 1 : -1);
-            player.transform.localScale = scale;
-        }
+        //// 设置玩家朝向Gold
+        //Vector3 direction = (targetPosition - player.transform.position).normalized;
+        //if (direction.x != 0)
+        //{
+        //    Vector3 scale = player.transform.localScale;
+        //    scale.x = Mathf.Abs(scale.x) * (direction.x > 0 ? 1 : -1);
+        //    player.transform.localScale = scale;
+       // }
 
         // 使用DOTween平滑移动玩家
         moveTween = player.transform.DOMove(targetPosition, moveDuration)
@@ -349,7 +351,7 @@ public class GoldDialogue : MonoBehaviour
 
                 // 标记玩家已到达Gold身边
                 playerArrived = true;
-
+               // playerAnimator.SetBool("IsDisappear",true);
                 // 结束对话
                 EndDialogue();
             });

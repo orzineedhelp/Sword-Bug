@@ -330,7 +330,7 @@ GameObject:
   m_Component:
   - component: {fileID: 27064052}
   - component: {fileID: 27064053}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +527,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 694645025
   m_SortingLayer: 2
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 14a6477b4d818654393f86590cb66ec2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -567,7 +567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playAudioEvent: {fileID: 11400000, guid: 7d32d7452e516f84c9f726e9d1d7561a, type: 2}
-  clip: {fileID: 8300000, guid: ffe42f6fe51497b4fa838904e2418209, type: 3}
+  clip: {fileID: 8300000, guid: 1b7587c347ce27b4781b02fc74bd5de7, type: 3}
   playOnEnable: 0
 --- !u!114 &61763707
 MonoBehaviour:
@@ -3012,7 +3012,7 @@ GameObject:
   m_Component:
   - component: {fileID: 138628972}
   - component: {fileID: 138628973}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3691,7 +3691,7 @@ GameObject:
   m_Component:
   - component: {fileID: 309604262}
   - component: {fileID: 309604263}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3941,7 +3941,7 @@ GameObject:
   m_Component:
   - component: {fileID: 371097609}
   - component: {fileID: 371097610}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4294,7 +4294,7 @@ GameObject:
   - component: {fileID: 464568212}
   - component: {fileID: 464568214}
   - component: {fileID: 464568213}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: fist
   m_TagString: Spike
   m_Icon: {fileID: 0}
@@ -4604,7 +4604,7 @@ GameObject:
   - component: {fileID: 583344887}
   - component: {fileID: 583344886}
   - component: {fileID: 583344885}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: spike_ground
   m_TagString: Spike
   m_Icon: {fileID: 0}
@@ -5286,7 +5286,7 @@ GameObject:
   - component: {fileID: 722339447}
   - component: {fileID: 722339449}
   - component: {fileID: 722339448}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: left
   m_TagString: Spike
   m_Icon: {fileID: 0}
@@ -5560,7 +5560,7 @@ GameObject:
   m_Component:
   - component: {fileID: 746279603}
   - component: {fileID: 746279604}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6753,7 +6753,7 @@ GameObject:
   m_Component:
   - component: {fileID: 980927265}
   - component: {fileID: 980927266}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7173,7 +7173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1110630301}
   - component: {fileID: 1110630302}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7836,7 +7836,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1304643211}
   - component: {fileID: 1304643212}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8004,7 +8004,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1317504427}
   - component: {fileID: 1317504428}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8376,7 +8376,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1556606391}
   - component: {fileID: 1556606392}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8580,7 +8580,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1600745551}
   - component: {fileID: 1600745552}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8664,7 +8664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1628525763}
   - component: {fileID: 1628525764}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10400,7 +10400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1768480194}
   - component: {fileID: 1768480195}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13981,7 +13981,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1804249481}
   - component: {fileID: 1804249482}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14064,7 +14064,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1831370902}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14100,7 +14100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1834431987}
   - component: {fileID: 1834431988}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14184,7 +14184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1861407785}
   - component: {fileID: 1861407786}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14268,7 +14268,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1865207621}
   - component: {fileID: 1865207622}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14958,7 +14958,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2028058271}
   - component: {fileID: 2028058272}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15043,7 +15043,7 @@ GameObject:
   - component: {fileID: 2041107223}
   - component: {fileID: 2041107225}
   - component: {fileID: 2041107224}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: second
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15147,7 +15147,7 @@ GameObject:
   - component: {fileID: 2042052218}
   - component: {fileID: 2042052220}
   - component: {fileID: 2042052219}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: right
   m_TagString: Spike
   m_Icon: {fileID: 0}
@@ -15443,7 +15443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2101187760}
   - component: {fileID: 2101187761}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

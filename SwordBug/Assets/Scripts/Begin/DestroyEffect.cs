@@ -2,6 +2,7 @@ using UnityEngine;
 using Cinemachine;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.Rendering;
 
 public class DestroyEffect : MonoBehaviour
 {
@@ -9,7 +10,9 @@ public class DestroyEffect : MonoBehaviour
     public GameObject object1; // 物体1（将被监视的物体）
     public GameObject object2; // 物体2（将被激活的物体）
     public CinemachineVirtualCamera virtualCamera; // Cinemachine虚拟相机
-
+    public AudioSource audioSource;
+    public AudioClip clip;
+    public Animator animator;
     [Header("对话框设置")]
     public GameObject dialogPanel; // 对话框面板
     [TextArea(3, 5)]
@@ -30,6 +33,7 @@ public class DestroyEffect : MonoBehaviour
     private void Awake()
     {
         playerInputControl=new PlayerInputControl();
+        audioSource = GetComponent<AudioSource>();
     }
     private void OnEnable()
     {
@@ -81,6 +85,8 @@ public class DestroyEffect : MonoBehaviour
 
         // 显示对话框
         ShowDialog();
+        animator.SetBool("IsAngry", true);
+
     }
 
     void ShowDialog()
@@ -153,7 +159,7 @@ public class DestroyEffect : MonoBehaviour
     {
         // 计算目标位置（Y轴减少指定距离）
         Vector3 targetPosition = object2StartPosition - new Vector3(0, descentDistance, 0);
-
+        audioSource.Play();
         // 使用DOTween实现缓慢下降
         object2.transform.DOMove(targetPosition, descentDuration)
             .SetEase(Ease.OutCubic).OnComplete(() =>
@@ -169,6 +175,7 @@ public class DestroyEffect : MonoBehaviour
         GoldDialogue goldDialogue = object2.GetComponent<GoldDialogue>();
         if (goldDialogue != null)
         {
+            audioSource.PlayOneShot(clip);
             goldDialogue.StartDialogue();
         }
         else

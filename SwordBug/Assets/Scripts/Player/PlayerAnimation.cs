@@ -66,6 +66,10 @@ public class PlayerAnimation : MonoBehaviour
 
     }
     
+    public void EndAni()
+    {
+        ani.SetTrigger("END");
+    }
    
 
 }

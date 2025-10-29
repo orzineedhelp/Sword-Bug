@@ -86,7 +86,7 @@ public class TetrisGameLogic : MonoBehaviour {
             tetris.TransformToNext();
         }
 
-        Debug.Log($"俄罗斯方块生成时旋转了 {randomRotations} 次");
+      //  Debug.Log($"俄罗斯方块生成时旋转了 {randomRotations} 次");
     }
 
     // 确保生成位置有效

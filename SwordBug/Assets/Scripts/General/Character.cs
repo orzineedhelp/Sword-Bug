@@ -14,6 +14,7 @@ public class Character : MonoBehaviour,ISaveable
     public DialogueTrigger dialogue;
     public DialogueTrigger dialogueTetromino;
     public DialogueTrigger dialogueEnd;
+    public AudioDefination audiodef;
     [Header("基本属性")]
      public int maxHealth=6;
      public int currentHealth;
@@ -111,7 +112,8 @@ public class Character : MonoBehaviour,ISaveable
             collision.GetComponent<Animator>().SetTrigger("Broke");
             rb.velocity = new Vector2(rb.velocity.x, 0); // 重置Y轴速度
             rb.AddForce(transform.up * 15f, ForceMode2D.Impulse);
-            
+            //jump音效
+            pcControl.audioJump.PlayAudioClip();
         }
         
         if( collision.tag == "Tetromino")
@@ -143,20 +145,26 @@ public class Character : MonoBehaviour,ISaveable
         else
         { 
             currentHealth = 0;
+
             isDead = true;
             //dead
             OnDead?.Invoke();
         }
         OnHealthChange?.Invoke(this);
     }
+    public void AudioDead()
+    {
+        audiodef.PlayAudioClip();
+    }
     public void TakeDamge()
     {
-        
-            currentHealth = 0;
-            isDead = true;
+        currentHealth = 0;
+
+        isDead = true;
             //dead
             OnDead?.Invoke();
-            OnHealthChange?.Invoke(this);
+
+        OnHealthChange?.Invoke(this);
     }
 
     private void TriggerNoHurt()

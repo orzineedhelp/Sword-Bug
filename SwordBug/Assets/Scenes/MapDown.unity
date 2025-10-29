@@ -2133,7 +2133,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.23304844, y: -5.4227557}
+  m_Offset: {x: 0.809422, y: -4.278657}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2144,7 +2144,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 14.355532, y: 22.800114}
+  m_Size: {x: 17.813751, y: 25.088312}
   m_EdgeRadius: 0
 --- !u!114 &835272349
 MonoBehaviour:
@@ -3510,7 +3510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8563494657809390493}
   - component: {fileID: 3330054538604985328}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3642,7 +3642,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2671070723610598969}
   - component: {fileID: 311822856745840782}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4330,7 +4330,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2656444767872822697}
   - component: {fileID: 1131549775991892279}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4607,7 +4607,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5469992430799625316}
   - component: {fileID: 2643651690357454954}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5828,7 +5828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1608222875074398803}
   - component: {fileID: 4071628123575689603}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7479,7 +7479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6493990425336426798}
   - component: {fileID: 4419829776303683312}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19016,7 +19016,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5954149297673043619}
   - component: {fileID: 1831566805165903604}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19061,7 +19061,7 @@ GameObject:
   - component: {fileID: 2532149920498683927}
   - component: {fileID: 2715966623630984578}
   - component: {fileID: 1692153035237164137}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: spike
   m_TagString: Spike
   m_Icon: {fileID: 0}
@@ -20610,7 +20610,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2810742820709051699}
   - component: {fileID: 9211582839802549261}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21028,7 +21028,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1472209493856750442}
   - component: {fileID: 7477155776606969704}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21263,7 +21263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6796931094270662847}
   - component: {fileID: 7364711806605830586}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Idle (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
