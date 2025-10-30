@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class TetrisGameLogic : MonoBehaviour {
+public class TetrisGameLogic : MonoBehaviour
+{
     [Header("生成设置")]
     [Tooltip("The Current Tetris User can control")]
     public TetrisOp CurrentTetris;
     [Tooltip("The Tetris moving down speed-DownSpeed X 1 Cells per Second")]
-    public float DownSpeed=1.0f;
+    public float DownSpeed = 1.0f;
     private float LastDownTime;
-   // private bool IsNextPositionsCleared = true;//true-clear last transformed positions before move the tetris.false won't clear it.
+    // private bool IsNextPositionsCleared = true;//true-clear last transformed positions before move the tetris.false won't clear it.
     public TetrisClearLine TCL;
     public TetrisGameOver TGO;
     public TetrisOp[] AllTetrisCanUse;
@@ -38,13 +39,14 @@ public class TetrisGameLogic : MonoBehaviour {
     [Header("特殊方块设置")]
     public int specialTetrisIndex = 2;  // 特殊方块的索引（j=2）
     public bool requireNoRotation = true; // 是否需要无旋转状态
-    
 
-    void Start () {
+
+    void Start()
+    {
         gameStartTime = Time.time;//等待延迟后生成方块
         //RandomChooseCurrentTetris();
         LastDownTime = Time.time;
-	}
+    }
 
     void RandomChooseCurrentTetris()
     {
@@ -65,7 +67,7 @@ public class TetrisGameLogic : MonoBehaviour {
             }
             else
             {
-                    ApplyRandomRotation(CurrentTetris);
+                ApplyRandomRotation(CurrentTetris);
             }
         }
 
@@ -86,7 +88,7 @@ public class TetrisGameLogic : MonoBehaviour {
             tetris.TransformToNext();
         }
 
-      //  Debug.Log($"俄罗斯方块生成时旋转了 {randomRotations} 次");
+        //  Debug.Log($"俄罗斯方块生成时旋转了 {randomRotations} 次");
     }
 
     // 确保生成位置有效
@@ -128,7 +130,8 @@ public class TetrisGameLogic : MonoBehaviour {
     }
 
 
-    void Update () {
+    void Update()
+    {
         // 检查游戏是否应该开始
         if (!gameStarted && Time.time - gameStartTime >= startDelay)
         {
@@ -144,8 +147,8 @@ public class TetrisGameLogic : MonoBehaviour {
 
         bool TransformedAtThisFrame = false;
         float Now = Time.time;
-        float ElapsedTime = Now-LastDownTime;//Get elapsed time from last down one cell
-       
+        float ElapsedTime = Now - LastDownTime;//Get elapsed time from last down one cell
+
         _Offset = CurrentTetris.OffsetAtTileMap;
         float DefaultDownSpeed = DownSpeed;
 
@@ -162,16 +165,16 @@ public class TetrisGameLogic : MonoBehaviour {
                 CurrentTetris.TransformToPrevious();
             }
         }
-        
 
-        if (ElapsedTime>=1.0f/DownSpeed)//达到可以下落一格的时间
+
+        if (ElapsedTime >= 1.0f / DownSpeed)//达到可以下落一格的时间
         {
             _Offset.y -= 1;
             LastDownTime = Time.time;
         }
 
         //Test if next transformed Positions are cleared,if not,paint tetris at last position and reset it.
-        if (CurrentTetris.IsTransformedPositionsCleared(_Offset,CurrentTetris.OriginPositionAtTileMap))
+        if (CurrentTetris.IsTransformedPositionsCleared(_Offset, CurrentTetris.OriginPositionAtTileMap))
         {
             CurrentTetris.OffsetAtTileMap = _Offset;//save the new offset
             CurrentTetris.ComputeCurrentTransformedPositions();
@@ -186,7 +189,7 @@ public class TetrisGameLogic : MonoBehaviour {
             CurrentTetris.Reset();
         }
         // 检查当前活动方块是否被收集
-        if (CurrentTetris != null && CurrentTetris.isCollected)
+        if (CurrentTetris != null && CurrentTetris.isCollected&&CurrentTetris.isCollectable)
         {
             // 如果当前活动方块被收集，立即生成新方块
             Debug.Log("当前方块被收集，生成新方块");
@@ -195,13 +198,13 @@ public class TetrisGameLogic : MonoBehaviour {
             LastDownTime = Time.time;
         }
         TCL.ClearLockedTiles();
-        if(TGO.IsGameOver())
+        if (TGO.IsGameOver())
         {
             DownSpeed = 0.0f;
             isOver = true;
         }
 
-       
+
     }
 
 

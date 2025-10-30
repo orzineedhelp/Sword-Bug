@@ -7,7 +7,7 @@
 
 public enum SceneType
 {
-    Location,Menu,Dialogue
+    MapUp,MapDown,Menu,Dialogue
 }
 
 public enum PersistentType

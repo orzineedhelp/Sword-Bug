@@ -38,6 +38,13 @@ public class TetrisOp : MonoBehaviour {
     public bool isCollected = false;    // 是否已被收集
     public GameObject weaponPrefab;     // 对应的武器预制体
 
+
+    public void ResetCollectableState()
+    {
+        isCollected = false;
+        isCollectable = false;
+        // 重置其他与收集相关的状态
+    }
     // 新增方法：设置为可收集
     public void SetCollectable(bool collectable)
     {

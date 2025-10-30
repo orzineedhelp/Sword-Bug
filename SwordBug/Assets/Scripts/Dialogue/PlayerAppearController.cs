@@ -209,7 +209,7 @@ public class PlayerAppearController : MonoBehaviour
         }
 
         // 如果未移动或已到达，直接返回
-        if (!isMoving || hasArrived) return;
+        if (!isMoving || hasArrived) enabled = false;
 
         // 获取当前位置和目标位置
         Vector2 currentPos = transform.position;

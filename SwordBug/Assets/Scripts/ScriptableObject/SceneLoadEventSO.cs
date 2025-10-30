@@ -11,9 +11,9 @@ public class SceneLoadEventSO : ScriptableObject
     /// </summary>
     /// <param name="gameScene">下一个地点</param>
     /// <param name="position">传送位置</param>
-    /// <param name="isAni">是否要加入转场动画</param>
-    public void RaisedLoadRequestEvent(GameSceneSO gameScene, Vector3 position, bool isAni,bool isChangePos)
+    /// <param name="isReset">是否要重置玩家数值</param>
+    public void RaisedLoadRequestEvent(GameSceneSO gameScene, Vector3 position, bool isReset,bool isChangePos)
     {
-        LoadRequestEvent?.Invoke(gameScene, position, isAni,isChangePos);
+        LoadRequestEvent?.Invoke(gameScene, position, isReset,isChangePos);
     }
 }

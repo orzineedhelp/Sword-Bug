@@ -15,6 +15,7 @@ public class Character : MonoBehaviour,ISaveable
     public DialogueTrigger dialogueTetromino;
     public DialogueTrigger dialogueEnd;
     public AudioDefination audiodef;
+    public PlayerAppearController appearController;
     [Header("基本属性")]
      public int maxHealth=6;
      public int currentHealth;
@@ -33,6 +34,8 @@ public class Character : MonoBehaviour,ISaveable
     public bool isDead;
     public bool isRestart;
 
+   
+
     public UnityEvent<Transform> OnTakeDamage;//事件
     public UnityEvent OnDead;
 
@@ -44,10 +47,14 @@ public class Character : MonoBehaviour,ISaveable
 
         rb = GetComponent<Rigidbody2D>();
         originalScale = this.gameObject.transform.localScale.x;
+        appearController = GetComponent<PlayerAppearController>();
     }
     private void NewGame()
     {
         currentHealth = maxHealth;
+        if(appearController.enabled==false)
+        { appearController.enabled = true; }
+        
     }
     private void OnEnable()
     {
@@ -216,6 +223,8 @@ public class Character : MonoBehaviour,ISaveable
         else
         {
             data.characterPosDict.Add(GetDataID().ID, transform.position);
+            Debug.Log("加入列表"+data.characterPosDict[GetDataID().ID]);
+
             data.floatSavedData.Add(GetDataID().ID + "health", maxHealth);//重启则满血
             data.floatSavedData.Add(GetDataID().ID + "scale.x", originalScale);//将初始大小赋值给data，以达到重启关卡后直接进入刚吃蘑菇状态
             data.boolSaveData.Add(GetDataID().ID,true);

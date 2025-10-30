@@ -73,7 +73,6 @@ public class Item : MonoBehaviour
 
         if (itemCollider != null) itemCollider.enabled = true;
 
-
         Debug.Log($"道具已放回场景");
     }
     public void DestoryCurrentItem()

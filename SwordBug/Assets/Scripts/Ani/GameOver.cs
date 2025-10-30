@@ -11,6 +11,7 @@ public class GameOver : MonoBehaviour
     public PlayerAnimation pa;
     public TeleportPoint teleport;
     public GameObject mainUI;
+    public Item phone;
     [SerializeField] private AnimationCurve moveCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
     private void Awake()
     {
@@ -23,18 +24,20 @@ public class GameOver : MonoBehaviour
         if (endDialogue.isEnd)
         {
             player.GetComponent<PlayerControl>().enabled=false;
-            StartCoroutine(FlyToSky(11, 5f));
-            if(mainUI != null)
-            mainUI.SetActive(false);
+            StartCoroutine(FlyToSky(4f, 3f));
+            //if(mainUI != null)
+            //mainUI.SetActive(false);
             
         }
+         Item obj = FindAnyObjectByType<Item>();
+        if(obj.itemType==Tools.Phone) 
+            { phone = obj; }
     }
    public IEnumerator FlyToSky(float targetY, float duration)
     {
         Vector3 startPosition = player.transform.position;
         Vector3 targetPosition = new Vector3(startPosition.x, targetY, startPosition.z);
         float elapsedTime = 0f;
-
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
@@ -50,7 +53,8 @@ public class GameOver : MonoBehaviour
 
         player.transform.position = targetPosition;
         pa.EndAni();
-        yield return 1f;
+        Destroy(player);
+        yield return 5f;
         Addressables.LoadSceneAsync("END");
         //teleport.TriggerAction();
     }

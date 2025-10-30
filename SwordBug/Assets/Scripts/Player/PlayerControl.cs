@@ -80,7 +80,12 @@ public class PlayerControl : MonoBehaviour
     public Sign sign;
     private Vector2 attackDirec;
     public DialogueTrigger dialogueEnd;
+    public DialogueTrigger dialogueSword;
+    public DialogueTrigger dialogueMushroom;
+    public DialogueTrigger dialogueTetrimino;
+
     public PlayerAppearController appearController;
+    public GoldDialogueTrigger goldDialogue;
     [Header("撑杆跳")]
     [SerializeField] private float pvForce;//竖直力量
     [SerializeField] private float poleVaultHorizontalForce; // 水平方向力量
@@ -104,6 +109,7 @@ public class PlayerControl : MonoBehaviour
         coll=GetComponent<CapsuleCollider2D>();
         inventory = GetComponent<PlayerInventory>();
         character = GetComponent<Character>();
+        goldDialogue = GetComponent<GoldDialogueTrigger>();
 
         attackDirec =attackArea.transform.localScale;
         originalScale=transform.localScale;
@@ -164,6 +170,29 @@ public class PlayerControl : MonoBehaviour
         Debug.Log($"移动方向{(isMovementReversed ? "已反转" : "恢复正常")}");
         Debug.Log($"大小改变模式: {(isInSizeChangeMode ? "启用" : "禁用")}");
     }
+    public void ToggleInputSystem(bool needChange)
+    {
+        isMovementReversed = needChange;
+        isInSizeChangeMode = needChange;
+
+        if (isInSizeChangeMode)
+        {
+            // 启用大小改变功能
+            inputActions.GamePlay.Change.started += OnScaleKeyPressed;
+            inputActions.GamePlay.Change.canceled += OnScaleKeyReleased;
+        }
+        else
+        {
+            // 禁用大小改变功能
+            inputActions.GamePlay.Change.started -= OnScaleKeyPressed;
+            inputActions.GamePlay.Change.canceled -= OnScaleKeyReleased;
+
+            // 当退出大小改变模式时，自动恢复到原始大小
+            RestoreToOriginalSize();
+            isMovementReversed = false;
+
+        }
+    }
 
     /// <summary>
     /// 按下缩放键时的处理
@@ -193,7 +222,7 @@ public class PlayerControl : MonoBehaviour
     /// </summary>
     private void StartGradualShrink()
     {
-        Debug.Log($"开始渐进缩小 - 模式: {isInSizeChangeMode}, 正在改变: {isChangingSize}");
+        //Debug.Log($"开始渐进缩小 - 模式: {isInSizeChangeMode}, 正在改变: {isChangingSize}");
         if (!isInSizeChangeMode || isChangingSize)
         {
             Debug.LogWarning($"无法开始缩小: 模式={isInSizeChangeMode}, 正在改变={isChangingSize}");
@@ -212,7 +241,7 @@ public class PlayerControl : MonoBehaviour
            
 
         sizeChangeCoroutine = StartCoroutine(GradualShrinkProcess());
-        Debug.Log("启动渐进缩小协程");
+       // Debug.Log("启动渐进缩小协程");
     }
 
     /// <summary>
@@ -248,7 +277,7 @@ public class PlayerControl : MonoBehaviour
 
             transform.localScale = newShrinkScale;
             // 添加详细的调试信息
-            Debug.Log($"缩放更新: {transform.localScale}, isScaleKeyPressed: {isScaleKeyPressed}, isInSizeChangeMode: {isInSizeChangeMode}");
+        //    Debug.Log($"缩放更新: {transform.localScale}, isScaleKeyPressed: {isScaleKeyPressed}, isInSizeChangeMode: {isInSizeChangeMode}");
             // 如果达到最小尺寸且不是死亡状态，造成伤害
             if (newScale.x <= minScale && !isDead)
             {
@@ -309,6 +338,11 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
+        if (inventory.currentItem == null)
+        {
+            isPick=false;
+            isHold=false;
+        }
         if (isChangingSize && sizeChangeCoroutine == null)
         {
             Debug.LogWarning("异常：isChangingSize为true但协程为null");
@@ -319,12 +353,13 @@ public class PlayerControl : MonoBehaviour
         CheckState();
         if (character.isRestart)
         {
-            if (!isMovementReversed&&!isTetromino&&isMushroom)
-            {
-                Debug.LogWarning("切换！");
-                ToggleInputSystem();//设置为刚吃下第一个蘑菇的状态
-                character.isRestart = false;
-            }
+            //if (!isMovementReversed&&!isTetromino&&isMushroom)
+            //{
+            //    Debug.LogWarning("切换！");
+            //    ToggleInputSystem();//设置为刚吃下第一个蘑菇的状态
+            //    character.isRestart = false;
+            //}
+           
             Item sword = transform.GetComponentInChildren<Item>();
             if (sword == null) character.isRestart = false;
             if (sword.tag == "Sword")
@@ -381,12 +416,140 @@ public class PlayerControl : MonoBehaviour
        inputActions.GamePlay.Enable();
     }
 
-    private void OnLoadEvent(GameSceneSO arg0, Vector3 arg1, bool arg2, bool i)
+    /// <summary>
+    /// 加载场景，禁用玩家一段
+    /// </summary>
+    /// <param name="arg0"></param>
+    /// <param name="arg1"></param>
+    /// <param name="arg2"></param>
+    /// <param name="i"></param>
+    private void OnLoadEvent(GameSceneSO loadScene, Vector3 arg1, bool isReset, bool i)
     {
-       inputActions.GamePlay.Disable();
+        inputActions.GamePlay.Disable();
+        enemy.SetActive(false);
+        Debug.Log("playercontrol进行load场景，设置isReset为" + isReset);
+
+        // 无论是否重置，返回菜单时都要删除sword
+        if (loadScene.sceneType == SceneType.Menu)
+        {
+            DestroySwordIfExists();
+            ForceCloseAllDialogues();
+        }
+
+        if (isReset)
+        {
+            ResetPlayer();
+        }
 
     }
 
+    private void DestroySwordIfExists()
+    {
+        // 方法1：查找玩家手中的sword
+        Item swordInHand = transform.GetComponentInChildren<Item>();
+        if (swordInHand != null && swordInHand.CompareTag("Sword"))
+        {
+            Destroy(swordInHand.gameObject);
+            Debug.Log("删除玩家手中的sword");
+        }
+
+        // 方法2：查找场景中所有sword（包括已返回到世界的）
+        GameObject[] swordsInWorld = GameObject.FindGameObjectsWithTag("Sword");
+        foreach (GameObject sword in swordsInWorld)
+        {
+            // 确保不删除玩家手中的sword（可能已经被上面删除了）
+            if (sword != null && sword.transform.parent != transform)
+            {
+                Destroy(sword);
+                Debug.Log("删除场景中的sword: " + sword.name);
+            }
+        }
+
+        // 方法3：额外检查block对象（如果有sword相关的话）
+        if (block != null && block.activeInHierarchy )
+        {
+            block.SetActive(false);
+            Debug.Log("禁用sword block");
+        }
+
+        // 确保enemy被禁用
+        enemy.SetActive(false);
+        enemy.transform.position = new Vector3(-28.3999996f, 9.46000004f, 0);
+    }
+
+    public void ResetPlayer()
+    {
+        isHold = false;//判断手里是否有东西
+        isPick = false;//是否捡取物品
+        ToggleInputSystem(false);
+        isMushroom = false;
+        isTetromino = false;
+        
+
+        // 删除sword（如果存在）
+        DestroySwordIfExists();
+
+        //对话也需重置
+        // 强制重置所有对话
+        ForceCloseAllDialogues();
+        if (inventory.currentItem != null)
+        {
+            Destroy(inventory.currentItem.gameObject);
+        }
+        transform.localScale = originalScale;
+        if (inputActions.GamePlay.Change.enabled) inputActions.GamePlay.Change.Disable();
+        Debug.Log("玩家状态已完全重置");
+    }
+    /// <summary>
+    /// 强制关闭所有对话并标记为未完成
+    /// </summary>
+    public void ForceCloseAllDialogues()
+    {
+        // 重置 dialogueEnd
+        if (dialogueEnd != null)
+        {
+            dialogueEnd.ResetDialogue();
+            dialogueEnd.isEnd = false;
+            dialogueEnd.dialogueCompleted = false;
+            dialogueEnd.dialogueActive = false;
+
+            // 强制关闭对话UI
+            dialogueEnd.ForceCloseDialogue();
+        }
+        if(dialogueMushroom != null)
+        {
+            dialogueMushroom.ResetDialogue();
+            dialogueMushroom.isEnd = false;
+            dialogueMushroom.dialogueActive=false;
+            dialogueMushroom.dialogueCompleted=false;
+        }
+        if (dialogueSword != null)
+        {
+            dialogueSword.ResetDialogue();
+            dialogueSword.isEnd = false;
+            dialogueSword.dialogueActive = false;
+            dialogueSword.dialogueCompleted = false;
+        }
+        if (dialogueTetrimino != null)
+        {
+            dialogueTetrimino.ResetDialogue();
+            dialogueTetrimino.isEnd = false;
+            dialogueTetrimino.dialogueActive = false;
+            dialogueTetrimino.dialogueCompleted = false;
+        }
+        // 重置 goldDialogue
+        if (goldDialogue != null)
+        {
+            goldDialogue.ResetDialogue();
+            goldDialogue.dialogueActive = false;
+            goldDialogue.dialogueCompleted = false;
+
+            // 强制关闭对话UI
+            goldDialogue.ForceCloseDialogue();
+        }
+
+        Debug.Log("所有对话已强制关闭并重置");
+    }
     private void OnDisable()
     {
         inputActions.Disable();

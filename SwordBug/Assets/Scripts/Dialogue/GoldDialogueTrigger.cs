@@ -35,7 +35,8 @@ public class GoldDialogueTrigger : MonoBehaviour
     public float autoStartDelay = 1.0f; // 动画结束后延迟开始对话的时间
 
     // 私有变量
-    private bool dialogueActive = false; // 对话是否正在进行中
+    public bool dialogueBrokein = false;//对话是否被打断
+    public bool dialogueActive = false; // 对话是否正在进行中
     public bool dialogueCompleted = false; // 对话是否已完成
     private int currentDialogueIndex = 0; // 当前对话条目的索引
     private Tween typewriterTween; // 存储打字机效果的Tween对象
@@ -44,11 +45,15 @@ public class GoldDialogueTrigger : MonoBehaviour
     private PlayerInputControl inputActions; // 输入控制系统
     private bool waitingForAnimation = true; // 是否在等待动画完成
     public GameObject player;
+    private bool isPlayerInRange = false; // 玩家是否在触发范围内
+    private bool canInteract = true; // 是否可以交互
+
     // 触发模式枚举定义
     public enum TriggerMode
     {
         AutoAfterAnimation, // 动画后自动触发
-        Manual              // 手动触发
+        Manual,              // 手动触发
+        Proximity           // 位置触发
     }
 
     // 对话条目数据结构
@@ -78,7 +83,6 @@ public class GoldDialogueTrigger : MonoBehaviour
 
     void Start()
     {
-       
         // 初始隐藏所有对话框UI元素
         if (dialogueBox != null) dialogueBox.SetActive(false);
         if (playerDialogueBox != null) playerDialogueBox.SetActive(false);
@@ -102,32 +106,32 @@ public class GoldDialogueTrigger : MonoBehaviour
         {
             case TriggerMode.AutoAfterAnimation:
                 waitingForAnimation = true; // 等待动画完成标志
-              //  Debug.Log("等待动画完成后自动开始对话");
+                //  Debug.Log("等待动画完成后自动开始对话");
                 break;
             case TriggerMode.Manual:
                 waitingForAnimation = false; // 不需要等待动画
                 Debug.Log("等待手动触发对话");
                 break;
+            case TriggerMode.Proximity:
+                waitingForAnimation = false; // 不需要等待动画
+                Debug.Log("位置触发模式已启用");
+                break;
         }
     }
+
     private void PauseGame(bool isStop)
     {
         if (isStop)
         {
             player.GetComponent<PlayerControl>().enabled = false;
             player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-
-            //暂停输入
-
+            // 暂停输入
         }
         else
         {
             player.GetComponent<PlayerControl>().enabled = true;
-
-
         }
     }
-
 
     // 确保所有对话条目中的情绪图标在场景启动时都是隐藏状态
     void EnsureEmotionIconsAreHidden()
@@ -143,8 +147,6 @@ public class GoldDialogueTrigger : MonoBehaviour
 
     void Update()
     {
-        
-
         // 检测对话输入：当对话激活时，检测鼠标点击输入
         if (dialogueActive && inputActions.UI.Click.triggered)
         {
@@ -152,6 +154,18 @@ public class GoldDialogueTrigger : MonoBehaviour
         }
     }
 
+    // 触发器进入检测
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (triggerMode == TriggerMode.Proximity &&
+            !dialogueActive &&
+            !dialogueCompleted &&
+            canInteract &&
+            collision.CompareTag("Player"))
+        {
+            StartDialogue();
+        }
+    }
 
     // 公共方法：在动画完成后调用（用于AutoAfterAnimation触发模式）
     public void OnAnimationComplete()
@@ -161,7 +175,6 @@ public class GoldDialogueTrigger : MonoBehaviour
             Debug.Log("动画完成，准备开始对话");
             waitingForAnimation = false; // 标记动画已完成
             StartCoroutine(StartDialogueAfterDelay()); // 延迟后开始对话
-           
         }
     }
 
@@ -170,7 +183,6 @@ public class GoldDialogueTrigger : MonoBehaviour
     {
         yield return new WaitForSeconds(autoStartDelay); // 等待指定延迟时间
         PauseGame(true);
-
         StartDialogue(); // 开始对话
     }
 
@@ -307,7 +319,7 @@ public class GoldDialogueTrigger : MonoBehaviour
             currentEmotionIcon.transform.DOScale(originalScale, emotionIconScaleDuration)
                 .SetEase(Ease.OutBack); // 使用回弹效果
 
-           // Debug.Log($"显示情绪图标: {currentEmotionIcon.name}");
+            // Debug.Log($"显示情绪图标: {currentEmotionIcon.name}");
         }
     }
 
@@ -414,6 +426,12 @@ public class GoldDialogueTrigger : MonoBehaviour
             currentEmotionIcon = null;
         }
 
+        // 位置触发模式：重置交互状态
+        if (triggerMode == TriggerMode.Proximity)
+        {
+            canInteract = true;
+        }
+
         // 停止并清除打字机Tween
         if (typewriterTween != null && typewriterTween.IsActive())
         {
@@ -421,5 +439,48 @@ public class GoldDialogueTrigger : MonoBehaviour
         }
     }
 
-   
+    public void ForceCloseDialogue()
+    {
+        ResetDialogue();
+
+        // 隐藏对话框和头像
+        if (dialogueBox != null)
+        {
+            dialogueBox.SetActive(false);
+        }
+        if (playerDialogueBox != null)
+        {
+            playerDialogueBox.SetActive(false);
+        }
+        if (goldImage != null) goldImage.gameObject.SetActive(false);
+
+        // 隐藏所有文本
+        if (goldText != null) goldText.gameObject.SetActive(false);
+        if (playerText != null) playerText.gameObject.SetActive(false);
+
+        // 确保所有情绪图标是隐藏的
+        EnsureEmotionIconsAreHidden();
+
+        // 恢复玩家控制
+        PauseGame(false);
+
+        Debug.Log($"对话已强制关闭: {gameObject.name}");
+    }
+
+    // 位置触发模式：禁用交互（例如在特定情况下不允许触发对话）
+    public void SetInteractable(bool interactable)
+    {
+        canInteract = interactable;
+    }
+
+    // 在编辑器中可视化触发范围
+    private void OnDrawGizmosSelected()
+    {
+        if (triggerMode == TriggerMode.Proximity)
+        {
+            // 绘制触发范围
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, triggerDistance);
+        }
+    }
 }

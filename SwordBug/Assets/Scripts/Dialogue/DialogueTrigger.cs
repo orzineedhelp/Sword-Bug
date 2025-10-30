@@ -35,8 +35,10 @@ public class DialogueTrigger : MonoBehaviour
     public float emotionIconScaleDuration = 0.8f; // 图标缩放动画时长（调慢了）
 
     // 私有变量
-    private bool dialogueActive = false;
-    private bool dialogueCompleted = false;
+    public bool dialogueBrokein = false;//对话是否被打断
+
+    public bool dialogueActive = false;
+    public bool dialogueCompleted = false;
     private int currentDialogueIndex = 0;
     private Tween typewriterTween;
     private bool canProceedToNext = false;
@@ -427,5 +429,31 @@ public class DialogueTrigger : MonoBehaviour
         
     }
 
-   
+    /// <summary>
+    /// 强制关闭对话UI
+    /// </summary>
+    public void ForceCloseDialogue()
+    {
+        ResetDialogue();
+
+        // 隐藏对话框和头像
+        if (dialogueBox != null)
+        {
+            dialogueBox.SetActive(false);
+        }
+        if (PlayerDialogueBox != null)
+        {
+            PlayerDialogueBox.SetActive(false);
+        }
+        if (goldImage != null) goldImage.gameObject.SetActive(false);
+
+        // 隐藏所有文本
+        if (goldText != null) goldText.gameObject.SetActive(false);
+        if (playerText != null) playerText.gameObject.SetActive(false);
+
+        // 确保所有情绪图标是隐藏的
+        EnsureEmotionIconsAreHidden();
+
+        Debug.Log($"对话已强制关闭: {gameObject.name}");
+    }
 }
