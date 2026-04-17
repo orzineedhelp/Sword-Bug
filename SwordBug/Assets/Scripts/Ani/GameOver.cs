@@ -46,6 +46,7 @@ public class GameOver : MonoBehaviour
             // 使用 AnimationCurve 控制缓动
             float curveValue = moveCurve.Evaluate(progress);
 
+            
             player.transform.position = Vector3.Lerp(startPosition, targetPosition, curveValue);
 
             yield return null;

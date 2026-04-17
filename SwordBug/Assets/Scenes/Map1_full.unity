@@ -3349,7 +3349,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 14.64
+  orthographic size: 5.109989
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3373,8 +3373,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 796828769}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.0021816602, w: 0.9999976}
-  m_LocalPosition: {x: -28.6, y: 7.51, z: -10}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.31542742, y: 1.0948565, z: -10.225721}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6316,6 +6316,7 @@ MonoBehaviour:
   dialogueTetromino: {fileID: 0}
   dialogueEnd: {fileID: 0}
   audiodef: {fileID: 0}
+  appearController: {fileID: 0}
   maxHealth: 6
   currentHealth: 6
   nohurtDuration: 2
@@ -6509,7 +6510,11 @@ MonoBehaviour:
   block: {fileID: 0}
   sign: {fileID: 0}
   dialogueEnd: {fileID: 0}
+  dialogueSword: {fileID: 0}
+  dialogueMushroom: {fileID: 0}
+  dialogueTetrimino: {fileID: 0}
   appearController: {fileID: 0}
+  goldDialogue: {fileID: 0}
   pvForce: 25
   poleVaultHorizontalForce: 20
   shrinkSpeed: 5
@@ -7514,6 +7519,7 @@ MonoBehaviour:
   dialogueTetromino: {fileID: 0}
   dialogueEnd: {fileID: 0}
   audiodef: {fileID: 0}
+  appearController: {fileID: 0}
   maxHealth: 6
   currentHealth: 6
   nohurtDuration: 0

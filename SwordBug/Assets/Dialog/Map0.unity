@@ -770,6 +770,8 @@ MonoBehaviour:
   startDelay: 0.2
   emotionIconScaleDuration: 0.3
   autoStartDelay: 1
+  dialogueBrokein: 0
+  dialogueActive: 0
   dialogueCompleted: 0
   player: {fileID: 388143542}
 --- !u!114 &388143548
@@ -895,6 +897,7 @@ MonoBehaviour:
   dialogueTetromino: {fileID: 0}
   dialogueEnd: {fileID: 0}
   audiodef: {fileID: 388143544}
+  appearController: {fileID: 0}
   maxHealth: 6
   currentHealth: 6
   nohurtDuration: 2
@@ -1100,7 +1103,11 @@ MonoBehaviour:
   block: {fileID: 658681677}
   sign: {fileID: 1633752108}
   dialogueEnd: {fileID: 0}
+  dialogueSword: {fileID: 0}
+  dialogueMushroom: {fileID: 0}
+  dialogueTetrimino: {fileID: 0}
   appearController: {fileID: 388143546}
+  goldDialogue: {fileID: 0}
   pvForce: 25
   poleVaultHorizontalForce: 20
   shrinkSpeed: 5
@@ -3918,6 +3925,8 @@ MonoBehaviour:
   startDelay: 0.2
   emotionIconScaleDuration: 0.3
   autoStartDelay: 1
+  dialogueBrokein: 0
+  dialogueActive: 0
   dialogueCompleted: 0
   player: {fileID: 0}
 --- !u!1 &1654862060546602626
