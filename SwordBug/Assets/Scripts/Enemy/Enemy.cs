@@ -4,24 +4,27 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    Rigidbody2D rb;
-    PhysicsCheck pc;
-    SpriteRenderer sr;
+    protected Rigidbody2D rb;
+    protected PhysicsCheck pc;
+    protected SpriteRenderer sr;
     private Animator ani;
 
-    [Header ("基本参数")]
-    [SerializeField] private float moveSpeed;
+    [Header ("移动速度")]
+    [SerializeField] protected float moveSpeed;
     public Vector3 faceDirec;
     public Transform attacker;
-    [Header("撞墙计时器")]
+    [Header("等待设置")]
     public float waitTime;
     public float waitCounter;
     public bool wait;
-    [Header("受伤")]
+    [Header("受伤设置")]
     public bool isHurt;
     [SerializeField] private float hurtForce;
 
-    private void Awake()
+    [Header("FSM")]
+    public bool isFSMControlled = false;
+
+    protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         pc = GetComponent<PhysicsCheck>();
@@ -39,7 +42,7 @@ public class Enemy : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!wait&&!isHurt)
+        if (!isFSMControlled && !wait && !isHurt)
         {
             Move();
         }

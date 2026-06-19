@@ -270,6 +270,17 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""512e9678-c8ba-4041-9fab-daf56e81c6ef"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""50b63363-6b50-4af7-a758-b84ccc91384b"",
                     ""path"": ""<Keyboard>/k"",
                     ""interactions"": """",

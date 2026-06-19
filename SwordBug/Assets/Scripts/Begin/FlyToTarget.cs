@@ -55,7 +55,7 @@ public class FlyToTarget : MonoBehaviour
 
         if (showDebugInfo && Time.frameCount % 30 == 0) // 每30帧输出一次，避免日志过多
         {
-            Debug.Log($"当前距离: {distance}, 移动速度: {moveSpeed}");
+       //     Debug.Log($"当前距离: {distance}, 移动速度: {moveSpeed}");
         }
 
         if (distance > stoppingDistance)

@@ -64,7 +64,7 @@ public class DestroyEffect : MonoBehaviour
         }
 
         // 如果正在等待点击，检测鼠标左键
-        if (waitingForClick && playerInputControl.UI.Click.triggered)
+        if (waitingForClick && playerInputControl.UI.Click.WasPressedThisFrame())
         {
             OnMouseClicked();
         }

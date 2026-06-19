@@ -15,7 +15,7 @@ public class Character : MonoBehaviour,ISaveable
     public DialogueTrigger dialogueTetromino;
     public DialogueTrigger dialogueEnd;
     public AudioDefination audiodef;
-    public PlayerAppearController appearController;
+    public PlayerAppearDOTween appearController;
     [Header("»ù±¾ÊôÐÔ")]
      public int maxHealth=6;
      public int currentHealth;
@@ -47,7 +47,7 @@ public class Character : MonoBehaviour,ISaveable
 
         rb = GetComponent<Rigidbody2D>();
         originalScale = this.gameObject.transform.localScale.x;
-        appearController = GetComponent<PlayerAppearController>();
+        appearController = GetComponent<PlayerAppearDOTween>();
     }
     private void NewGame()
     {

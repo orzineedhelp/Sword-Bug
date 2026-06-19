@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Audio
+  m_EditorClassIdentifier: 
+  m_GroupName: Audio
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 57e0ae3b424c43046b391aa7e1a36c23
+  m_SerializeEntries:
+  - m_GUID: 021016e11eaca2d4d8851f908e408818
+    m_Address: "Assets/Audio/\u5236\u7247\u5E2E\u7D20\u6750_105112_\u667A\u80FDUI\u7528\u6237\u754C\u9762\u51FA\u73B0\u5C0F\u6545.mp3"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 07656e52d60ff8549b97739faf9ea2bc
+    m_Address: Assets/Audio/damage_hurt.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 15a3737b78d2df246bed102b3c301968
+    m_Address: Assets/AudioMixer/MainAudioMixer.mixer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1abbacb3b47561442b1b81e09177a631
+    m_Address: Assets/Audio/maou_game_village10.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b7587c347ce27b4781b02fc74bd5de7
+    m_Address: Assets/Audio/pick.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2c5292ba5cf254919a6b9e2b18e04f49
+    m_Address: Assets/Audio/DM-CGS-07.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 594553306953fe64e857699881010efb
+    m_Address: Assets/Audio/chorus_of_angels1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 59bf14c1911118f42a1a6c5129df96f6
+    m_Address: "Assets/Audio/\u77F3\u5934\u649E\u51FB_Freesound.mp3"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d592f50b85674a4da02980ee78ef8d8
+    m_Address: "Assets/Audio/8-\u4F4D\u7206\u70B8 _ SFX\u7206\u70B805 - Freesound.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 72575e9fca70a654b9f374599afbfd00
+    m_Address: Assets/Audio/warp1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7e215eaf906942346b06491d896b7bd1
+    m_Address: "Assets/Audio/\u6309\u94AE\u70B9\u51FB _ \u6309\u94AE 27_Freesound.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7e9ee6dc04a5d40d1a5dfc4beb9865e7
+    m_Address: Assets/Audio/DM-CGS-restore.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 91cdd95a2c0e00245adde02a7ac0e4cb
+    m_Address: Assets/Audio/heal.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a26a809968ca0f244ab9a332a30158bd
+    m_Address: "Assets/Audio/\u5236\u7247\u5E2E\u7D20\u6750_222030_\u4E00\u4E2A\u5B9D\u7269\u51FA\u73B0\u4E86.mp3"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b5b0cadedcb17184881dbcb8ee2c56f0
+    m_Address: Assets/Audio/damage5.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b653245f7ad3c754e841c0513d0f2d50
+    m_Address: Assets/Audio/dead.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ed03e406bf33c6d4b8fbb24a3e5fb349
+    m_Address: "Assets/Audio/\u83DC\u9E1F\u56FE\u5E93-\u4EBA\u7269\u8DF3\u8DC3.mp3"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fe0b1f9aeb45b41b089175aeeabd5d95
+    m_Address: Assets/Audio/DM-CGS-46.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ffe42f6fe51497b4fa838904e2418209
+    m_Address: Assets/Audio/pickup04.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: df611b160dc759f4d92b8ab234ebc39f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 74c541b91a5a51e4bbd674653d185645, type: 2}
+    - {fileID: 11400000, guid: 5ce52dcc9bd76d84dacaeb41ab45d95c, type: 2}

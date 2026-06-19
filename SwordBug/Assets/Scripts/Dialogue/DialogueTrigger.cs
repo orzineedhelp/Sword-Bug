@@ -102,7 +102,7 @@ public class DialogueTrigger : MonoBehaviour
 
     void Update()
     {
-        //// TODO
+
         //// 设置条件触发触发对话
         if (isDialogue && !dialogueActive && !dialogueCompleted)
         {
@@ -110,7 +110,7 @@ public class DialogueTrigger : MonoBehaviour
         }
 
         // 处理对话继续输入（鼠标左键&&enter&&space）
-        if (dialogueActive && (inputActions.UI.Click.triggered))
+        if (dialogueActive && (inputActions.UI.Click.WasPressedThisFrame()))
         {
             HandleDialogueInput();
         }
@@ -274,6 +274,8 @@ public class DialogueTrigger : MonoBehaviour
         .OnComplete(() =>
         {
             canProceedToNext = true;
+           // Debug.Log($"打字机完成，索引 {currentDialogueIndex}");
+
             // 打字完成后显示情绪图标
             ShowEmotionIcon();
         }); 
@@ -312,6 +314,7 @@ public class DialogueTrigger : MonoBehaviour
 
     void HandleDialogueInput()
     {
+        Debug.Log($"点击时 canProceedToNext = {canProceedToNext}, 当前索引 = {currentDialogueIndex}");
         if (!canProceedToNext)
         {
             // 如果打字效果还没完成，立即完成

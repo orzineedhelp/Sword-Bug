@@ -30,13 +30,7 @@ public class DataManager : MonoBehaviour
         loadDataEvent.OnEventRaised-= Load;
 
     }
-    //private void Update()
-    //{
-    //    if (Keyboard.current.lKey.wasPressedThisFrame)
-    //    {
-    //        Load();
-    //    }
-    //}
+
     public void RegisterSaveData(ISaveable saveable)
     {
         if(!saveableList.Contains(saveable))

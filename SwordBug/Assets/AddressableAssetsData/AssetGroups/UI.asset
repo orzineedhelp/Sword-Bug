@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: UI
+  m_EditorClassIdentifier: 
+  m_GroupName: UI
+  m_Data:
+    m_SerializedData: []
+  m_GUID: b1d944e65a6467b4dab6b782d112f272
+  m_SerializeEntries:
+  - m_GUID: 14a6477b4d818654393f86590cb66ec2
+    m_Address: sword_normal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29e21165cb3ae334d969d4be634eaa9e
+    m_Address: Assets/2D Pixel Art Platformer Biome - Plains/Sprites.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3266d78ffde3e5b4ab8c0268061fdf0a
+    m_Address: BLOCKS_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3d537d9d518252a46921f2663936291a
+    m_Address: MainBackground1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 63a45f74ce1145d43b58cf7901b42cfa
+    m_Address: Assets/Image/tiles.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 689dd8b3be008054c8179899f8388277
+    m_Address: green_little_bug
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 70013b2f5a9da264a96a1b48e86ff6a8
+    m_Address: 8b1985a1220522205f766e732abfff8c
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: df611b160dc759f4d92b8ab234ebc39f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 073c4e716805065489143d4c4faf9729, type: 2}
+    - {fileID: 11400000, guid: d68d54471042a5847913b83dc570c2c1, type: 2}

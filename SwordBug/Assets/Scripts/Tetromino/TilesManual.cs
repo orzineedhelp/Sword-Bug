@@ -34,8 +34,5 @@ public class TilesManual : MonoBehaviour {
 
     public void LockTile(Vector3Int _Position,TileBase _LockedTile) { TileMapObject.SetTile(_Position, _LockedTile); }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
+  
 }

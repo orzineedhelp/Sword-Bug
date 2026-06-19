@@ -113,13 +113,13 @@ public class GoldDialogue : MonoBehaviour
     void Update()
     {
         // 检查鼠标左键点击且物体2已激活且没有对话在进行且对话从未显示过
-        if (inputActions.UI.Click.triggered && gameObject.activeInHierarchy && !isDialogueActive && !hasDialogueBeenShown)
+        if (inputActions.UI.Click.WasPressedThisFrame() && gameObject.activeInHierarchy && !isDialogueActive && !hasDialogueBeenShown)
         {
             StartDialogue();
         }
 
         // 如果对话正在进行中，处理鼠标左键点击继续
-        if (isDialogueActive && (inputActions.UI.Click.triggered))
+        if (isDialogueActive && (inputActions.UI.Click.WasPressedThisFrame()))
         {
             HandleMouseClick();
         }

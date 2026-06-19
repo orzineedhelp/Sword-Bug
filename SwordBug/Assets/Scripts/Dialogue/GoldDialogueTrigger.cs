@@ -148,7 +148,7 @@ public class GoldDialogueTrigger : MonoBehaviour
     void Update()
     {
         // 检测对话输入：当对话激活时，检测鼠标点击输入
-        if (dialogueActive && inputActions.UI.Click.triggered)
+        if (dialogueActive && inputActions.UI.Click.WasPressedThisFrame())
         {
             HandleDialogueInput(); // 处理对话输入
         }

@@ -84,7 +84,7 @@ public class PlayerControl : MonoBehaviour
     public DialogueTrigger dialogueMushroom;
     public DialogueTrigger dialogueTetrimino;
 
-    public PlayerAppearController appearController;
+    public PlayerAppearDOTween appearController;
     public GoldDialogueTrigger goldDialogue;
     [Header("³Å¸ËÌø")]
     [SerializeField] private float pvForce;//ÊúÖ±Á¦Á¿
@@ -110,6 +110,7 @@ public class PlayerControl : MonoBehaviour
         inventory = GetComponent<PlayerInventory>();
         character = GetComponent<Character>();
         goldDialogue = GetComponent<GoldDialogueTrigger>();
+        appearController = GetComponent<PlayerAppearDOTween>();
 
         attackDirec =attackArea.transform.localScale;
         originalScale=transform.localScale;
